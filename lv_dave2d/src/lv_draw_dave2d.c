@@ -85,16 +85,12 @@ void lv_draw_dave2d_init(void)
     draw_dave2d_unit->idx = DRAW_UNIT_ID_DAVE2D;
 
     result = lv_dave2d_init();
-    if(D2_OK != result) {
-        __BKPT(0);
-    }
+    LV_ASSERT(D2_OK == result);
 
 #if LV_USE_OS
     lv_result_t res;
     res =  lv_mutex_init(&xd2Semaphore);
-    if(LV_RESULT_OK != res) {
-        __BKPT(0);
-    }
+    LV_ASSERT(LV_RESULT_OK == res);
 
     draw_dave2d_unit->pd2Mutex    = &xd2Semaphore;
 #endif
@@ -261,7 +257,6 @@ static int32_t _dave2d_evaluate(lv_draw_unit_t * u, lv_draw_task_t * t)
                 else
 #endif
                 {
-                    __NOP();
                 }
                 ret =  0;
                 break;
@@ -593,9 +588,7 @@ void dave2d_execute_dlist_and_flush(void)
     lv_result_t  status;
 
     status = lv_mutex_lock(&xd2Semaphore);
-    if(LV_RESULT_OK != status) {
-        __BKPT(0);
-    }
+    LV_ASSERT(LV_RESULT_OK == status);
 #endif
 
     d2_s32     result;
@@ -607,21 +600,15 @@ void dave2d_execute_dlist_and_flush(void)
     d2_start_rendering();
 #else
     result = d2_executerenderbuffer(_d2_handle, _renderbuffer, 0);
-    if(D2_OK != result) {
-        __BKPT(0);
-    }
+    LV_ASSERT(D2_OK == result);
 
     result = d2_flushframe(_d2_handle);
-    if(D2_OK != result) {
-        __BKPT(0);
-    }
+    LV_ASSERT(D2_OK == result);
 #endif
 
 #if (D2_USE_INTERNAL_RENDERBUFFERS == 0)
     result = d2_selectrenderbuffer(_d2_handle, _renderbuffer);
-    if(D2_OK != result) {
-        __BKPT(0);
-    }
+    LV_ASSERT(D2_OK == result);
 #endif
 
     while(false == _lv_ll_is_empty(&_ll_Dave2D_Tasks)) {
@@ -634,9 +621,7 @@ void dave2d_execute_dlist_and_flush(void)
 
 #if LV_USE_OS
     status = lv_mutex_unlock(&xd2Semaphore);
-    if(LV_RESULT_OK != status) {
-        __BKPT(0);
-    }
+    LV_ASSERT(LV_RESULT_OK == status);
 #endif
 }
 
