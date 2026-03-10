@@ -20,7 +20,7 @@ void lv_draw_dave2d_label(lv_draw_dave2d_unit_t * u, const lv_draw_label_dsc_t *
 
 #if (D2_LABEL_RENDER_EACH_LETTER == 0)
     lv_area_t clipped_area;
-    bool clips = _lv_area_intersect(&clipped_area, coords, u->base_unit.clip_area);
+    bool clips = lv_area_intersect(&clipped_area, coords, u->base_unit.clip_area);
     if (!clips) return;
 
     int32_t x = 0 - u->base_unit.target_layer->buf_area.x1;
@@ -120,9 +120,9 @@ static void lv_draw_dave2d_draw_letter_cb(lv_draw_unit_t * u, lv_draw_glyph_dsc_
 
     bool is_common;
 #if D2_LABEL_RENDER_EACH_LETTER
-    is_common = _lv_area_intersect(&clip_area, glyph_draw_dsc->letter_coords, u->clip_area);
+    is_common = lv_area_intersect(&clip_area, glyph_draw_dsc->letter_coords, u->clip_area);
 #else
-    is_common = _lv_area_intersect(&clip_area, glyph_draw_dsc->letter_coords, unit->label_coords);
+    is_common = lv_area_intersect(&clip_area, glyph_draw_dsc->letter_coords, unit->label_coords);
 #endif
     if(!is_common) return;
 
