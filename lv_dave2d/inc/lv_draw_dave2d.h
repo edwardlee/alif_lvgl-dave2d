@@ -10,8 +10,16 @@ extern "C" {
  *********************/
 #include "src/lv_conf_internal.h"
 #include "src/draw/lv_draw.h"
+#include "src/draw/lv_draw_private.h"
 #include "dave_driver.h"
 #include "lv_draw_dave2d_utils.h"
+#include "src/draw/lv_draw_rect.h"
+#include "src/draw/lv_draw_line.h"
+#include "src/draw/lv_draw_arc.h"
+#include "src/draw/lv_draw_label.h"
+#include "src/draw/lv_draw_image.h"
+#include "src/draw/lv_draw_triangle.h"
+#include "src/draw/lv_draw_buf.h"
 #include "lv_dave2d_cfg.h"
 
 /*********************

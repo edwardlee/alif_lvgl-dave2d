@@ -8,6 +8,8 @@
  *********************/
 #include "lv_draw_dave2d.h"
 #include "lv_draw_dave2d_utils.h"
+#include "src/draw/lv_draw_buf_private.h"
+#include "src/misc/lv_area_private.h"
 
 /*********************
  *      DEFINES

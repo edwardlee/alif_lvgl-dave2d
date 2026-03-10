@@ -7,6 +7,8 @@
  *      INCLUDES
  *********************/
 #include "lv_draw_dave2d.h"
+#include "src/draw/lv_image_decoder_private.h"
+#include "src/draw/lv_draw_image_private.h"
 
 /*********************
  *      DEFINES

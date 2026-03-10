@@ -1,4 +1,5 @@
 #include "lv_draw_dave2d.h"
+#include "src/misc/lv_area_private.h"
 
 void lv_draw_dave2d_triangle(lv_draw_dave2d_unit_t * u, const lv_draw_triangle_dsc_t * dsc)
 {
