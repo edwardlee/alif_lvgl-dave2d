@@ -163,7 +163,6 @@ static void dave2d_draw_border_complex(lv_draw_dave2d_unit_t * u, const lv_area_
                                        const lv_area_t * orig_inner_area,
                                        int32_t rout, int32_t rin, lv_color_t color, lv_opa_t opa)
 {
-#if LV_DRAW_SW_COMPLEX
     /*Get clipped draw area which is the real draw area.
      *It is always the same or inside `coords`*/
     lv_area_t draw_area;
@@ -422,6 +421,4 @@ static void dave2d_draw_border_complex(lv_draw_dave2d_unit_t * u, const lv_area_
     status = lv_mutex_unlock(u->pd2Mutex);
     LV_ASSERT(LV_RESULT_OK == status);
 #endif
-
-#endif /*LV_DRAW_SW_COMPLEX*/
 }
